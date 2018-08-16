@@ -47,9 +47,9 @@ newclient () {
 	echo "<key>" >> ~/$1.ovpn
 	cat /etc/openvpn/easy-rsa/pki/private/$1.key >> ~/$1.ovpn
 	echo "</key>" >> ~/$1.ovpn
-	echo "<tls-auth>" >> ~/$1.ovpn
-	cat /etc/openvpn/ta.key >> ~/$1.ovpn
-	echo "</tls-auth>" >> ~/$1.ovpn
+#	echo "<tls-auth>" >> ~/$1.ovpn
+#	cat /etc/openvpn/ta.key >> ~/$1.ovpn
+#	echo "</tls-auth>" >> ~/$1.ovpn
 }
 
 if [[ -e /etc/openvpn/server.conf ]]; then
@@ -384,10 +384,10 @@ resolv-retry infinite
 nobind
 persist-key
 persist-tun
-remote-cert-tls server
-auth SHA512
+;remote-cert-tls server
+auth SHA1
 cipher AES-256-CBC
-comp-lzo
+;comp-lzo
 setenv opt block-outside-dns
 key-direction 1
 verb 3" > /etc/openvpn/client-common.txt
